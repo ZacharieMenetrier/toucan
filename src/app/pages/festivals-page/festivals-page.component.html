@@ -1,0 +1,13 @@
+<app-page>  
+  <app-post-card [text]="content?.data.card"></app-post-card>
+  
+  <app-search-bar *ngIf="!screenService.isMobile" [(search)]="search"></app-search-bar>
+  
+  <mat-grid-list [cols]="columns" rowHeight="62:88" gutterSize="32px" *ngIf="(festivals | async | searchFestival:search)?.length > 0">
+    <mat-grid-tile *ngFor="let festival of festivals | async | searchFestival:search; trackBy: trackByFn">
+      <app-festival-card [festival]="festival" [highlight]="search"></app-festival-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+  
+  <div class="no_festival" *ngIf="(festivals | async | searchFestival:search)?.length == 0" [appText]="content?.data.no_festival"></div>
+</app-page>

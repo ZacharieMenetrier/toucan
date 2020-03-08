@@ -1,0 +1,112 @@
+@import '~@angular/material/theming';
+
+@include mat-core();
+
+$toucan-primary: mat-palette($mat-yellow);
+$toucan-accent:  mat-palette($mat-red);
+$toucan-warn:    mat-palette($mat-red);
+
+$toucan-theme: mat-dark-theme($toucan-primary, $toucan-accent, $toucan-warn);
+
+@include angular-material-theme($toucan-theme);
+
+.snack-bar-error {
+  background-color: mat-color($toucan-warn, darker);
+  color: white;
+  font-weight: bold;
+}
+
+body {
+  font-family: "Fira Sans";
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+body,html,input,h1,h2,h3, p {
+  margin: 0;
+  padding: 0;
+  border: none;
+  line-height: 2.2em;
+}
+
+ul {
+  padding: 0px 0px 0px 16px;
+}
+
+h1 {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+*:focus {
+  outline: none;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #212121; 
+}
+
+::-webkit-scrollbar-thumb {
+  background: mat-color($toucan-primary);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: mat-color($toucan-primary, hover);
+}
+
+.darken-image {
+  position: relative;
+}
+
+.darken-image:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: block;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.darken-image-text div {
+  color: white;
+  position: relative;
+  z-index: 1;
+}
+
+.yellow-link {
+  a {
+    color: mat-color($toucan-primary);
+  }
+}
+
+.white-bold {
+  strong {
+    color: white;
+  }
+}
+
+.page {
+  padding: 64px;
+  width: 100%;
+}
+
+@media only screen and (min-width: 1200px)  {
+  .page {
+    width: 80%;
+  }
+}
+
+@media only screen and (min-width: 450px)  {
+  body {
+    text-align: justify;
+  }
+}

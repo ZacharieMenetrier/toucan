@@ -1,0 +1,96 @@
+.active {
+  color: #ffeb3b;
+}
+
+.column {
+  width: 100vw;
+}
+
+.toolbar {
+  position: fixed;
+  z-index: 4;
+  padding: 0px;
+  height: 64px;
+  min-height: 64px;
+  max-height: 64px;
+}
+
+.menu-link {
+  font-size: 0.8em;
+  padding: 16px;
+}
+
+.mobile-menu-link {
+  font-size: 1.5em;
+  padding: 16px;
+}
+
+.mobile-menu-link:hover:not(.active) {
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.menu-link:hover:not(.active) {
+  cursor: pointer;
+}
+
+.button {
+  padding: 16px 32px;
+  font-size: 1.2em;
+}
+
+a:hover {
+  cursor: default;
+}
+
+.search-bar {
+  position: fixed;
+  z-index: 5;
+}
+
+.suggestions {
+  min-height: calc(100vh - 50px - 64px);
+}
+
+.suggestion {
+  padding: 16px;
+  font-size: 1.2em;
+}
+
+.suggestion:hover {
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.mobile-menu {
+  width: 100vw;
+  height: 64px;
+  position: fixed;
+  bottom: 0;
+  background: #212121;
+  z-index: 4;
+}
+
+.mobile-icon {
+  font-size: 2em;
+  width: 64px;
+  height: 64px;
+}
+
+.mobile-icon:hover {
+  cursor: pointer;
+}
+
+.mobile-navigation-menu {
+  width: 100vw;
+  height: 64px;
+  position: fixed;
+  top: 0px;
+  background: #212121;
+  z-index: 4;
+}
+
+.mobile-navigation {
+  min-height: calc(100vh - 64px);
+  font-size: 1em;
+}

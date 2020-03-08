@@ -1,0 +1,45 @@
+.link-to-festival {
+    padding: 8px;
+    font-size: 1.2em;
+    border-radius: 4px;
+}
+
+.link-to-festival:hover {
+    color: rgb(34, 34, 34);
+    background: rgb(240, 240, 240);
+}
+
+.white {
+    color: #e8e8e8;
+    font-weight: bold;
+}
+
+.card {
+    line-height: 1.5em;
+    color: #afafaf;
+}
+
+.background-image {
+    height: calc(100vh - 64px);
+    width: 100vw;
+    background-size: cover;
+}
+
+h3 {
+    color: lightgrey;
+}
+
+.suggestions {
+    position: absolute;
+    background: whitesmoke;
+    color: #929292;
+    width: 100%;
+}
+
+.suggestion {
+    padding: 16px;
+}
+
+.suggestion:hover {
+    background: rgba(0, 0, 0, 0.05);
+}

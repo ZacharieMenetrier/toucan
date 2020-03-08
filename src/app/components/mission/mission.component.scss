@@ -1,0 +1,32 @@
+.title {
+    font-size: 1.2em;
+    text-transform: uppercase;
+}
+
+.icon {
+    font-size: 1.4em;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: #ffffff14;
+    color: white;
+}
+
+.banner {
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    width: calc(100% + 48px);
+    top: -24px;
+    left: -24px;
+    height: 92px;
+    padding: 24px;
+}
+
+.details {
+    text-align: justify;
+}
+
+.point {
+    text-align: justify;
+}

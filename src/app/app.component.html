@@ -1,0 +1,44 @@
+<ng-container *ngIf="!screenService.isMobile">
+    <mat-toolbar class="toolbar" fxLayout="row" fxLayoutAlign="space-between stretch">
+        <div fxLayout="row" fxLayoutAlign="start stretch">
+            <a fxLayout="row" fxLayoutAlign="center center" class="menu-link" [routerLink]="['/']"><h1>TOUCAN</h1></a>
+            <a fxLayout="row" fxLayoutAlign="center center" class="menu-link" [routerLink]="['/']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Accueil</a>
+            <a fxLayout="row" fxLayoutAlign="center center" class="menu-link" [routerLink]="['/festivals']" routerLinkActive="active">Festivals</a>
+            <a fxLayout="row" fxLayoutAlign="center center" class="menu-link" [routerLink]="['/missions']" routerLinkActive="active">Missions</a>
+            <a fxLayout="row" fxLayoutAlign="center center" class="menu-link" [routerLink]="['/contact']" routerLinkActive="active">Contact</a>
+            <a fxLayout="row" fxLayoutAlign="center center" class="menu-link" [routerLink]="['/about']" routerLinkActive="active">À propos</a>
+        </div>
+    </mat-toolbar>
+    <div style="height: 64px;"></div>
+</ng-container>
+
+<ng-container *ngIf="screenService.isMobile">
+    <ng-container *ngIf="isMobileSearchOpened">
+        <app-search-bar [(search)]="search" class="search-bar" #mobileSearchBar (blur)="closeMobileSearch()"></app-search-bar>
+        <div style="height: 50px;"></div>
+    </ng-container>
+    <div class="suggestions" *ngIf="search != ''" fxLayout="column">
+        <a *ngFor="let festival of festivals | async | searchFestival:search" class="suggestion" [routerLink]="['/festival', festival ? festival.uid : 'null']" (click)="closeMobileSearch()" [appHighlight]="search" [text]="festival.data.name"></a>
+    </div>
+    <div class="mobile-navigation" *ngIf="isMobileNavigationMenuOpened" fxLayout="column" fxLayoutAlign="end stretch" (click)="toggleNavigationMobileMenu()">
+        <a fxLayout="row" fxLayoutAlign="end center" class="mobile-menu-link" [routerLink]="['/']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Accueil</a>
+        <a fxLayout="row" fxLayoutAlign="end center" class="mobile-menu-link" [routerLink]="['/festivals']" routerLinkActive="active">Festivals</a>
+        <a fxLayout="row" fxLayoutAlign="end center" class="mobile-menu-link" [routerLink]="['/missions']" routerLinkActive="active">Missions</a>
+        <a fxLayout="row" fxLayoutAlign="end center" class="mobile-menu-link" [routerLink]="['/contact']" routerLinkActive="active">Contact</a>
+        <a fxLayout="row" fxLayoutAlign="end center" class="mobile-menu-link" [routerLink]="['/about']" routerLinkActive="active">À propos</a>
+    </div>
+</ng-container>
+
+<div [hidden]="search != '' || isMobileNavigationMenuOpened">
+    <router-outlet></router-outlet>    
+    <app-footer></app-footer>
+</div>
+
+<ng-container *ngIf="screenService.isMobile">
+    <div class="mobile-menu" fxLayout="row" fxLayoutAlign="space-between center">
+        <mat-icon class="material-icons-sharp mobile-icon" fxLayout="row" fxLayoutAlign="center center" (click)="activateMobileSearch()">search</mat-icon>
+        <a fxLayout="row" fxLayoutAlign="center center" class="menu-link" [routerLink]="['/']"><h1>TOUCAN</h1></a>
+        <mat-icon class="material-icons-sharp mobile-icon" fxLayout="row" fxLayoutAlign="center center" (click)="toggleNavigationMobileMenu()">menu</mat-icon>
+    </div>
+    <div style="height: 64px;"></div>
+</ng-container>

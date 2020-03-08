@@ -1,0 +1,17 @@
+<div fxLayout="column" fxLayoutAlign="start center">
+<!--     
+    <div style="max-width: 1200px" [style.padding]="screenService.margin">
+        <app-post-card [text]="content?.data.card"></app-post-card>
+    </div>
+     -->
+    <div style="width: 100%;" [style.background-image]="'url(' + (paragraph.image.url) + ')'" *ngFor="let paragraph of content?.data.paragraphs" class="section darken-image darken-image-text" fxLayout="column" fxLayoutAlign="center center" [style.padding]="screenService.margin">
+        
+        <div style="max-width: 1200px" fxLayout="column" [fxLayoutGap]="screenService.margin">
+            <div class="title">{{ paragraph.title }}</div>
+            <div class="text white-bold" [appText]="paragraph.text" [style.padding]="screenService.margin"></div>
+        </div>
+        
+    </div>
+</div>
+
+

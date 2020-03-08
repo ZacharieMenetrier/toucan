@@ -1,0 +1,42 @@
+<div class="darken-image background-image darken-image-text" [style.padding]="screenService.margin" [style.background-image]="'url(' + (content?.data.image.url) + ')'" fxLayout="column" fxLayoutAlign="space-around center">
+    
+    <div fxLayout="column" [fxLayoutGap]="screenService.margin" fxLayoutAling="start center">
+        <h1 style="text-align: center; font-size: 5em;">{{ content?.data.title }}</h1>
+        <h2 style="text-align: center; font-size: 2.5em;">{{ content?.data.baseline }}</h2>
+    </div>
+    
+    <div *ngIf="!screenService.isMobile" style="width: 100%; max-width: 1200px;">
+        <app-search-bar [(search)]="search" (navigateList)="onNavigateList($event)" (blur)="blur()"></app-search-bar>
+        <div class="suggestions" *ngIf="search != ''" fxLayout="column stretch">
+            <a *ngFor="let festival of festivals | async | searchFestival:search" class="suggestion" [routerLink]="['/festival', festival ? festival.uid : 'null']" [appHighlight]="search" color="black" [text]="festival.data.name"></a>
+        </div>
+    </div>
+    
+    <mat-icon class="material-icons-sharp" style="font-size: 4em;" fxLayout="row" fxLayoutAlign="center center">keyboard_arrow_down</mat-icon>
+    
+</div>
+
+<div [style.padding]="screenService.margin" fxLayout="column" fxLayoutAlign="start center">
+    
+    <div style="max-width: 1200px;" fxLayout="column"  [fxLayoutGap]="screenService.margin" >
+        
+        
+        <app-post-card style="width: 100%;" [text]="content?.data.card"></app-post-card>
+        
+        <div class="card white-bold" style="width: 100%;" [appText]="content?.data.search_text"></div>
+        
+        <div fxLayout="column" [fxLayoutGap]="screenService.margin" fxLayoutAlign="start stretch">
+            
+            <div [fxLayout]="areButtonsCollapsed ? 'column' : 'row'" [fxLayoutGap]="screenService.margin" fxLayoutAlign="start start">
+                <div class="card white-bold" fxFlex="grow" [appText]="content?.data.see_festivals"></div>
+                <button mat-raised-button fxFlex="noshrink" [routerLink]="['festivals']">Voir les festivals</button>
+            </div>
+            
+            <div [fxLayout]="areButtonsCollapsed ? 'column' : 'row'" [fxLayoutGap]="screenService.margin" fxLayoutAlign="start start">
+                <div class="card white-bold" fxFlex="grow" [appText]="content?.data.see_missions"></div>
+                <button mat-raised-button fxFlex="noshrink"  [routerLink]="['missions']">Voir les missions</button>
+            </div>
+            
+        </div>
+    </div>
+</div>

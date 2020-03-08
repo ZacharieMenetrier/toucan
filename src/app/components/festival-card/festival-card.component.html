@@ -1,0 +1,16 @@
+<a [routerLink]="['/festival', festival ? festival.uid : 'null']" fxLayout="row" fxLayoutAlign="center center">
+    <div class="container" [style.background-image]="'url(' + (festival ? festival.data.poster.url : '/') + ')'">
+        <div class="info" [class.active]="highlight" fxLayout="row"
+        fxLayoutAlign="center center">
+
+            <div class="text" fxLayout="column" fxLayoutGap="1vh" fxLayout="column" fxLayoutAlign="center center">
+                <div style="font-size: 1.5em; text-align: center" [appHighlight]="highlight" [text]="festival?.data.name"></div>
+                <div style="text-align: center" [appHighlight]="highlight" [text]="festival?.data.city"></div>
+                <div style="text-align: center">
+                    {{ festival?.data.date_start | date }}
+                </div>
+            </div>
+
+        </div>
+    </div>
+</a>

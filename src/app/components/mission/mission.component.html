@@ -1,0 +1,10 @@
+<div fxLayout="column">
+    
+    <div fxLayout="row" fxLayoutGap="16px" fxLayoutAlign="start center" class="banner" [style.background-color]="mission.color">
+        <!-- <mat-icon class="icon" fxLayout="column" fxLayoutAlign="center center">{{ mission.icon }}</mat-icon> -->
+        <div class="title">{{ mission.name }}</div>
+    </div>
+        
+    <div class="details" [appText]="mission.text"></div>
+    
+</div>

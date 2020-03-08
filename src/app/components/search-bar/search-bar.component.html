@@ -1,0 +1,4 @@
+<div fxLayout="row" fxLayoutAlign="start center" class="search">
+    <mat-icon style="margin-left: 16px; color: grey;" [class.icon]="search != ''" class="material-icons-sharp" (click)="onSearchChange('')">{{search == "" ? "search" : "close"}}</mat-icon>
+    <input (keydown)="onKeyDown($event)" (blur)="onBlur()" #input [ngModel]="search" (ngModelChange)="onSearchChange($event)" #ctrl="ngModel" required class="input" placeholder="Rechercher un festival ou une ville"/>
+</div>

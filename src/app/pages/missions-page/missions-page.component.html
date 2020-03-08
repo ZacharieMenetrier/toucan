@@ -1,0 +1,14 @@
+<app-page>    
+    <app-post-card [text]="content?.data.card"></app-post-card>
+    
+    <mat-grid-list [cols]="columns" rowHeight="1:1" [gutterSize]="screenService.margin">
+        <mat-grid-tile fxLayout="column" fxLayoutGap="16px" *ngFor="let mission of content?.data.missions;" class="tile" (click)="openMission(mission)">
+            <div fxLayout="column" fxLayoutGap="16px" fxLayoutAlign="center center" class="mission-card darken-image darken-image-text" [style.background-image]="'url(' + (mission.image.url) + ')'">
+                <div class="title">
+                    {{ mission.name }}
+                </div>
+            </div>
+        </mat-grid-tile>
+    </mat-grid-list>
+    
+</app-page>

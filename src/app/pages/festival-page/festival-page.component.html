@@ -1,0 +1,65 @@
+<app-page>   
+    
+    <div *ngIf="!screenService.isMobile" [fxLayout]="isButtonCollpsed ? 'column' : 'row'" fxLayoutGap="32px" style="margin-bottom: 32px;">
+        <a [routerLink]="['/festivals']"><button mat-fab color="basic"><mat-icon class="material-icons-sharp">arrow_back</mat-icon></button></a>
+        <app-post-card fxFlex="grow" [text]="festival?.data.description"></app-post-card>    
+    </div>
+    
+    <div [fxLayout]="isPosterCollapsed ? 'column' : 'row'" [fxLayoutGap]="screenService.margin">
+        
+        <div fxLayout="column" fxFlex="30">
+            <div class="poster" [style.background-image]="'url(' + (festival ? festival.data.poster.url : '/') + ')'"></div>
+            
+            <div fxLayout="row" fxLayoutGap="32px">
+                <div *ngFor="let network of festival?.data.networks" class="network" style="text-align: right;">
+                    <a [href]="network" target="blank"><i [class]="'network fab fa-' + getSocialNetworkIcon(network)" [matTooltip]="getSocialNetworkIcon(network)"></i></a>
+                </div>
+            </div>   
+            
+        </div>
+        
+        <div fxLayout="column" fxFlex="grow">
+            <div fxLayout="row wrap" fxLayoutAlign="space-between center" fxLayoutGap="32px grid" style="padding-bottom: 32px;">
+                
+                <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="16px">
+                    <h2>{{ festival?.data.name | uppercase }}</h2>
+                </div>
+                
+                <div fxLayout="row wrap" fxLayoutAlign="start center" fxLayoutGap="32px grid">
+                    <a [href]="festival?.data.website.url" target="blank">
+                        <button mat-raised-button>Site web</button>
+                    </a>
+                    
+                    <a [href]="festival?.data.volunteer_website.url" target="blank">
+                        <button mat-raised-button color="primary">Inscription bénévole</button>
+                    </a>            
+                </div>
+            </div>
+            
+            <div fxLayout="column" [fxLayoutGap]="screenService.margin">
+                
+                <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="32px">
+                    <mat-icon class="material-icons-sharp">flag</mat-icon>
+                    <div>Ouverture des inscriptions le {{ festival?.data.volunteer_date | date }}</div>
+                </div>
+                
+                <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="32px">
+                    <mat-icon class="material-icons-sharp">calendar_today</mat-icon>
+                    <div>Du {{ festival?.data.date_end | date }} Au {{ festival?.data.date_end | date }}</div> 
+                </div>     
+                
+                <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="32px">
+                    <mat-icon class="material-icons-sharp">room</mat-icon>
+                    <div>{{ festival?.data.city }} <span *ngIf="festival?.data.place"> - {{ festival?.data.place }}</span></div>
+                </div>
+                
+                <app-post-card fxFlex="grow" [text]="festival?.data.description" *ngIf="screenService.isMobile"></app-post-card>    
+                
+                <div class="info yellow-link" [appText]="festival?.data.info"></div>
+                
+            </div>
+            
+        </div>
+    </div>
+    
+</app-page>
